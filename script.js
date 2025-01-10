@@ -137,7 +137,7 @@ document.getElementById('botFile')?.addEventListener('change', function(e) {
     }
 });
 
-function populateReplays(botName) {
+function populateReplays(botName) { 
     const mockReplays = [
         {
             replayId: 1,
@@ -196,8 +196,17 @@ function populateReplays(botName) {
             <td>${replay.date}</td>
             <td>${replay.result}</td>
             <td>${replay.earnings}</td>
+            <td><button class="replay-btn" data-replayId="${replay.replayId}">Replay</button></td>
         `;
         replaysBody.appendChild(row);
+    });
+
+    // Add event listener to the replay buttons
+    document.querySelectorAll('.replay-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const replayId = this.getAttribute('data-replayId');
+            window.location.href = `game.html?replayId=${replayId}`;
+        });
     });
 }
 
