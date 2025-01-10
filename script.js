@@ -136,3 +136,76 @@ document.getElementById('botFile')?.addEventListener('change', function(e) {
         e.target.value = '';
     }
 });
+
+function populateReplays(botName) {
+    const mockReplays = [
+        {
+            replayId: 1,
+            botName: 'AlphaPoker',
+            opponent: 'Opponent1',
+            date: '2025-01-01',
+            result: 'Win',
+            earnings: '$500',
+        },
+        {
+            replayId: 2,
+            botName: 'AlphaPoker',
+            opponent: 'Opponent2',
+            date: '2025-01-02',
+            result: 'Loss',
+            earnings: '$-300',
+        },
+        {
+            replayId: 3,
+            botName: 'BetaBrawler',
+            opponent: 'Opponent3',
+            date: '2025-01-03',
+            result: 'Win',
+            earnings: '$800',
+        },
+        {
+            replayId: 4,
+            botName: 'GammaCrusher',
+            opponent: 'Opponent4',
+            date: '2025-01-04',
+            result: 'Draw',
+            earnings: '$0',
+        }
+    ];
+
+    const replaysBody = document.getElementById('replaysBody');
+    if (!replaysBody) return;
+
+    let filteredReplays;
+
+    // Show all replays if 'All Bots' is selected
+    if (botName === 'all') {
+        filteredReplays = mockReplays;
+    } else {
+        filteredReplays = mockReplays.filter(replay => replay.botName === botName);
+    }
+
+    // Clear the table and add filtered rows
+    replaysBody.innerHTML = '';
+    filteredReplays.forEach(replay => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${replay.replayId}</td>
+            <td>${replay.botName}</td>
+            <td>${replay.opponent}</td>
+            <td>${replay.date}</td>
+            <td>${replay.result}</td>
+            <td>${replay.earnings}</td>
+        `;
+        replaysBody.appendChild(row);
+    });
+}
+
+// Event listener to change the bot filter
+document.getElementById('botFilter').addEventListener('change', function() {
+    const selectedBot = this.value;
+    populateReplays(selectedBot);
+});
+
+// Initial population of replays for the default option (All Bots)
+populateReplays('all');
