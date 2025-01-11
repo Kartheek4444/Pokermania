@@ -294,11 +294,11 @@ textarea {
     margin: 0 auto;
 }
 
-.leaderboard-filters {
+.bot-filters {
     margin-bottom: 2rem;
 }
 
-.leaderboard-filters select {
+.bot-filters select {
     padding: 0.5rem 1rem;
     border-radius: 0.375rem;
     background-color: #374151;
