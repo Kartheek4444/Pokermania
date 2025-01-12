@@ -191,8 +191,8 @@
         <div class="game-table">
             <!-- Opponent 1 -->
             <div class="opponent">
-                <h2>Opponent 1</h2>
-                <div class="balance">$500</div>
+                <h2>{{ match.bot1.name }}</h2>
+                <div class="balance">{{  }}</div>
                 <div class="player-cards">
                     <div class="card-slot" id="player-card-1"></div>
                     <div class="card-slot" id="player-card-2"></div>
@@ -216,7 +216,6 @@
             </div>
 
             
-
             <!-- Opponent 2 -->
             <div class="opponent">
                 <h2>Opponent 2</h2>
@@ -231,6 +230,11 @@
         </div>
     </div>
 
+    <div id="game-status">
+        <p id="current-stage">Current Stage: Preflop</p>
+        <button id="next-step-button" onclick="nextStep()">Next Step</button>
+    </div>
+    
     <script src="game.js"></script>
 
 </body>
